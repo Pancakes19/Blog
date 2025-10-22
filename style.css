@@ -40,7 +40,7 @@
 body{
      font-family: "Montserrat", sans-serif;
      line-height: 1.6;
-     color: var(--color-grey-900);
+     color: var(--color-grey-300);
      overflow-x: hidden;
      background: var(--color-bg);
      font-size: 0.9rems;
@@ -145,7 +145,15 @@ nav button {
     display: flex;
     flex-direction: column;
     box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+    transition: var(--transition);
     
+}
+
+.nav__profile:hover > ul{
+    visibility: visible;
+    opacity: 1;
 }
 
 .nav__profile ul li a {
@@ -159,3 +167,47 @@ nav button {
     background: var(--color-red);
     color: var(--color-bg);
 }
+
+/*===================end of nav========================*/
+/*===================begining of general post=========*/
+.category__button{
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--card-border-radius-2);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.category__button:hover {
+    color: var(--color-white);
+}
+
+.post__thumbnail{
+    border-radius: var(--card-border-radius-5) 0;
+    border: 1rem solid var(--color-grey-900);
+    overflow: hidden;
+    margin-bottom: 1.6rem;
+}
+
+.post:hover .post__thumbnail img{
+    filter: saturate(0);
+    transition: filter 500ms ease;
+}
+
+.post__author{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.post__author-avatar{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--card-border-radius-3);
+    overflow: hidden;
+}
+
+/*===================begining of featured post=========*/
