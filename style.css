@@ -1,7 +1,7 @@
 
 :root {
 --color-primary: #6f6af8; 
---color-primary-light: hsl(242, 91%, 69, 18%); 
+--color-primary-light: hsl(242, 91%, 69%, 18%); 
 --color-primary-variant: #5854c7; 
 --color-red: #da0f3f; 
 --color-red-light: hsl(346, 87%, 46%, 15%); 
@@ -91,7 +91,8 @@ a{
 
 img {
     display: block;
-    width: 100%;
+    width: 120%;
+    height: 100%;
     object-fit: cover;
 }
 
