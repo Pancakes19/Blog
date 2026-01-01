@@ -37,6 +37,7 @@
     appearance: 0;
     list-style: none;
     text-decoration: none;
+    box-sizing: border-box;
 
 }
 
@@ -397,7 +398,90 @@ footer{
     line-height: 1.7;
 }
 
-/*===========endOfsinglepost================*/
+/*category__post*/
+.category__title{
+    height: 7rem;
+    margin-top: 4.5rem;
+    background: var(--color-grey-900);
+    display: grid;
+    place-items: center;
+}
+
+/*about page*/
+.empty__page{
+    height: 70vh;
+    text-align: center;
+    display: grid;
+    place-content: center;
+}
+
+
+/*general forms*/
+.form__section{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.form__section-container{
+    width: var(--form-width);
+}
+
+.alert__message{
+    padding: 0.8rem 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--card-border-radius-2);
+}
+
+.alert__message.error{
+    background: var(--color-red-light);
+    color: var(--color-red);
+}
+
+.alert__message.success{
+    background: var(--color-green-light);
+    color: var(--green-red);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form__control{
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.form__control.inline {
+    flex-direction: row;
+    align-items: center;
+}
+
+input, textarea, select{
+    padding: 0.8rem 1.4rem;
+    background-color: var(--color-grey-900);
+    border-radius: var(--card-border-radius-2);
+    resize: none;
+    color: var(--color-white);
+}
+
+.form__section small{
+    margin-top: 1rem;
+    display: block;
+}
+
+.form__section small a{
+    color: var(--color-primary);
+}
+
+
+
+/*===========endOfsinglepost=============
+Devices===*/
 
 @media  screen and (max-width:1024px) {
     .container{
@@ -442,6 +526,7 @@ footer{
         gap: 0;
         display: none;
     }
+    
 
     .nav__items li{
         width: 100%;
@@ -526,6 +611,12 @@ footer{
     .container__search-bar{
         width: 60%;
     }
+
+       /*============general forms============*/
+    .form__section-container{
+        padding: 3rem;
+    }
+    
 }
 
 @media screen and (max-width: 600px){
@@ -563,6 +654,17 @@ footer{
     /*============blog============*/
     .container__search-bar{
         width: var(--container-width-md);
+    }
+
+    /*Single post*/
+    .singlepost__container{
+        background-color: transparent;
+        padding: 0;
+    }
+
+           /*============general forms============*/
+    .form__section-container{
+        padding: 0;
     }
 }
 
