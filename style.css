@@ -534,6 +534,10 @@ input, textarea, select{
 
 }
 
+.sidebar__toggle{
+    display: none;
+}
+
 .dashboard main h2 {
     margin: 0 0 2rem 0;
     line-height: 1;
@@ -699,7 +703,21 @@ input, textarea, select{
     }
 
     /*============Dashboard============*/
+    .dashboard__container{
+        grid-template-columns: 4.3rem auto;
+        padding: 0;
+        background: transparent;
+    }
 
+    .dashboard aside{
+        background: var(--color-primary);
+    }
+
+    .dashboard aside h5{
+        display: none;
+    }
+
+    
     
 }
 
@@ -749,6 +767,57 @@ input, textarea, select{
            /*============general forms============*/
     .form__section-container{
         padding: 0;
+    }
+
+    /*============Dashboard============*/
+    .dashboard{
+        margin-top: 5rem;
+    }
+
+    .dashboard__container{
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .dashboard main{
+        margin: 0;
+    }
+
+    .dashboard main h2{
+        margin-top: 1rem;
+    }
+
+    .dashboard aside{
+        position: fixed;
+        box-shadow: 2rem 0 4rem rgba(0, 0, 0, 0.4);
+        left: 0;
+        height: 100vh;
+        transition: var(--transition);
+        background: var(--color-primary);
+    }
+
+    .dashboard .sidebar__toggle{
+        display: inline-block;
+        background: var(--color-primary-variant);
+        color: var(--color-white);
+        position: fixed;
+        right: 0;
+        bottom: 4rem;
+        z-index: 1;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50% 0 0 50%;
+        font-size: 1.3rem;
+        cursor: pointer;
+        box-shadow: -1rem 0 2rem rgba(0, 0, 0, 0.4);
+    }
+
+    .dashboard aside a h5{
+        display: inline-block;
+    }
+
+    #hide__sidebar-btn{
+        display: none;
     }
 }
 
