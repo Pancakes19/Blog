@@ -10,7 +10,7 @@ require 'config/database.php';
     <meta http-equiv="X-UA_-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog Website</title>
-    <link rel="stylesheet" href="./CSS/style.css" />
+    <link rel="stylesheet" href="<?= ROOT_URL ?>CSS/style.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@ require 'config/database.php';
   <body>
       <nav>
           <div class="container nav__container">
-              <a href="index.php" class="nav__logo">Anime Blog</a>
+              <a href="<?= ROOT_URL ?>" class="nav__logo">Anime Blog</a>
               <ul class="nav__items">
                   <li><a href="<?= ROOT_URL ?>blog.php">Blog</a></li>
                   <li><a href="<?= ROOT_URL ?>about.php">About</a></li>
@@ -32,8 +32,8 @@ require 'config/database.php';
                           <img src="./images/cat.jpg" alt="">
                       </div>
                       <ul>
-                          <li><a href="<?= ROOT_URL ?>admin/dashboard.html">Dashboard</a></li>
-                          <li><a href="<?= ROOT_URL ?>logout.html">Logout</a></li>
+                          <li><a href="<?= ROOT_URL ?>admin/dashboard.php">Dashboard</a></li>
+                          <li><a href="<?= ROOT_URL ?>logout.php">Logout</a></li>
                       </ul>
                   </li>
 
