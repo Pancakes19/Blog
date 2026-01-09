@@ -37,6 +37,6 @@
 </footer>
 
 
-<script src="./JS/main.js"></script>
+<script src="<?= ROOT_URL ?>JS/main.js"></script>
 </body>
 </html>
