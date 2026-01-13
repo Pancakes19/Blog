@@ -1,6 +1,6 @@
 <?php
 require 'config/database.php';
-
+//created table users
 //get signup form database
 if(isset($_POST['submit'])) {
 	$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
