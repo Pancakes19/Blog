@@ -1,0 +1,74 @@
+<?php
+require 'config/database.php';
+
+//get signup form database
+if(isset($_POST['submit'])) {
+	$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$username = filter_var($_POST['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+	$createpassword= filter_var($_POST['createpassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$confirmpassword = filter_var($_POST['confirmpassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$avatar = $_FILES['avatar'];
+
+	
+	//validate input 
+	if(!$firstname) {
+		$_SESSION['signup'] = "Please enter your first name bro!";
+	} elseif(!$lastname) {
+		$_SESSION['signup'] = "Please enter your last name bro!";
+	}elseif(!$username) {
+		$_SESSION['signup'] = "Please enter your username bro!";
+	}elseif(!$email) {
+		$_SESSION['signup'] = "Please enter a valid email bro!";
+	}elseif(strlen($createpassword) < 8 || strlen($confirmpassword) < 8) {
+		$_SESSION['signup'] = "Password is too short bro!";
+	}elseif(!$avatar['name']) {
+		$_SESSION['signup'] = "U need to add a Pfp bro!";
+	}else {
+		//check if passwords are matching
+		if($createpassword !== $confirmpassword) {
+			$_SESSION['signup'] = "Your passwords don't match bruh! ";
+		} else{
+			//if they match then hash them
+			$hashed_password = password_hash($createpassword, PASSWORD_DEFAULT);
+			
+			//ok now we check if the username or email already exists
+			$user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' ";
+			$user_check_result = mysqli_query($connection, $user_check_query);
+			if(mysqli_num_rows($user_check_result) > 0) {
+				$_SESSION['signup'] = "That Username or Email already exist bro!";
+			}else{
+				//cheking the avatar
+				//rename avatar with current timestamp
+				$time = time();
+				$avatar_name = $time . $avatar['name'];
+				$avatar_tmp_name = $avatar['tmp_name'];
+				$avatar_destination_path = 'images/' . $avatar_name;
+				
+				//make sure file is an image
+				$allowed_files = ['png', 'jpg', 'jpeg'];
+				$extention = explode('.', $avatar_name);
+				$extention = end($extention);
+				if(in_array($extention, $allowed_files)) {
+					//make sure the file is not too large (1mb+)
+					if($avatar['size'] < 1000000){
+						//upload avatar
+						move_uploaded_file($avatar_tmp_name, $avatar_destination_path);
+					}else {
+						$_SESSION['signup'] = "Your image size is too big bro! Not more than 1mb";
+					}
+				}else {
+					$_SESSION['signup'] = "We only allow .png, .jpg or jpeg file extensions bro!";
+
+				}
+			}
+		}
+	}
+
+	
+} else{
+	//if the button was not cliked then go back to signup page
+	header ('location: ' . ROOT_URL . 'signup.php');
+	die();
+}

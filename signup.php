@@ -1,3 +1,10 @@
+<?php
+require 'config/constants.php';
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,18 +28,18 @@
     <div class="alert__message error">
         <p>Sign Up failed. Try again Broskii</p>
     </div>
-    <form action="" enctype="multipart/form-data">
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <input type="text" placeholder="Username">
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Create Password">
-        <input type="password" placeholder="Confrim Password">
+    <form action="<?= ROOT_URL ?>signup-logic.php" enctype="multipart/form-data" method="POST">
+        <input type="text" name="firstname" placeholder="First Name">
+        <input type="text" name="lastname" placeholder="Last Name">
+        <input type="text" name="username" placeholder="Username">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="createpassword" placeholder="Create Password">
+        <input type="password" name="confirmpassword" placeholder="Confrim Password">
         <div class="form__control">
             <label for="avatar"></label>
-            <input type="file" id="avatar">
+            <input type="file"name="avatar"  id="avatar">
         </div>
-        <button type="submit" class="btn">Sign Up</button>
+        <button type="submit" name="submit" class="btn">Sign Up</button>
         <small>Already have an account? <a href="signin.php">Sign In</a></small>
     </form>
 </div>
