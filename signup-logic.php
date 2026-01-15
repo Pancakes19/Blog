@@ -1,5 +1,7 @@
 <?php
+session_start();
 require 'config/database.php';
+
 //created table users
 //get signup form database
 if(isset($_POST['submit'])) {
@@ -66,6 +68,24 @@ if(isset($_POST['submit'])) {
 		}
 	}
 
+	//redirect to signup page if there are any problems
+	if($_SESSION['signup']) {
+		//re-set the data back into the form
+		header('location: ' . ROOT_URL . 'signup.php');
+		die();
+	} else {
+		//proceed to insert data into the database
+		$insert_user_query = "INSERT INTO users (firstname, lastname, username, email, password, avatar, is_admin)
+		VALUES('$firstname', '$lastname', '$username', '$email', '$hashed_password', '$avatar', 0)";
+		
+		if(!msqli_errno($connection)) {
+			//redirect to login with success message
+			$_SESSION['signup-success'] = "Registration successful. Please Log in bro!";
+			header('location: ' . ROOT_URL . 'signin.php');
+			die();
+
+		}
+	}
 	
 } else{
 	//if the button was not cliked then go back to signup page

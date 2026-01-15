@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'config/constants.php';
 ?>
 
@@ -25,9 +26,15 @@ require 'config/constants.php';
 <section class="form__section">
 <div class="container form__section-container">
     <h2>Sign Up</h2>
-    <div class="alert__message error">
-        <p>Sign Up failed. Try again Broskii</p>
-    </div>
+	<?php if(isset($_SESSION['signup'])) : ?> 
+			<div class="alert__message error">
+				<p>
+					<?= $_SESSION['signup'];
+					unset($_SESSION['signup']);
+					?>
+				</p>
+				</div>
+	<?php endif ?>
     <form action="<?= ROOT_URL ?>signup-logic.php" enctype="multipart/form-data" method="POST">
         <input type="text" name="firstname" placeholder="First Name">
         <input type="text" name="lastname" placeholder="Last Name">
