@@ -71,6 +71,7 @@ if(isset($_POST['submit'])) {
 	//redirect to signup page if there are any problems
 	if($_SESSION['signup']) {
 		//re-set the data back into the form
+		$_SESSION['signup-data'] = $_POST;
 		header('location: ' . ROOT_URL . 'signup.php');
 		die();
 	} else {
