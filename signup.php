@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'config/constants.php';
 
 	//get back form data if the was an error to set it back to form

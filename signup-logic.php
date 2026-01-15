@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'config/database.php';
 
 //created table users
