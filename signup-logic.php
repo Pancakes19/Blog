@@ -76,10 +76,10 @@ if(isset($_POST['submit'])) {
 		die();
 	} else {
 		//proceed to insert data into the database
-		$insert_user_query = "INSERT INTO users (firstname, lastname, username, email, password, avatar, is_admin)
-		VALUES('$firstname', '$lastname', '$username', '$email', '$hashed_password', '$avatar', 0)";
+		$insert_user_query = "INSERT INTO users SET firstname='$firstname', lastname='$lastname', username='$username', email='$email', password='$hashed_password', avatar='$avatar_name', is_admin=0";
+		$insert_user_result = mysqli_query($connection, $insert_user_query);
 		
-		if(!msqli_errno($connection)) {
+		if(!mysqli_errno($connection)) {
 			//redirect to login with success message
 			$_SESSION['signup-success'] = "Registration successful. Please Log in bro!";
 			header('location: ' . ROOT_URL . 'signin.php');
